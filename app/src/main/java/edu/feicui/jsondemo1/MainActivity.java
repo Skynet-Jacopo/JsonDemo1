@@ -56,10 +56,6 @@ public class MainActivity extends AppCompatActivity {
 //                    tvName2.setText(listData.get(1).name);
 //                    tvAge2.setText(String.valueOf(listData.get(1).age));
 //                    Log.d(TAG, "handleMessage: 处理json");
-//
-//                    tvName1.setText(mBeanList.get(0).name);
-//                    tvAge1.setText(mBeanList.get(0).age);
-
 
                     Gson gson = new Gson();
                     String json = (String) msg.obj;
@@ -70,13 +66,6 @@ public class MainActivity extends AppCompatActivity {
                     tvAge1.setText(studentBeens.get(0).getAge()+"");
                     tvName2.setText(studentBeens.get(1).getName());
                     tvAge2.setText(studentBeens.get(1).getAge()+"");
-
-                    //tvName1.setText(studentBeens.get(0).getName());
-
-//                    for (StudentBean studentBeen : studentBeens) {
-//                        Log.d(TAG, "handleMessage: 遍历数组");
-//                        System.out.println(studentBeen);
-//                    }
                     break;
             }
         }
@@ -164,38 +153,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }.start();
-    }
-
-     String classname;
-
-    private  void getInfoFromJson(String infos) {
-
-        List<StudentBean> studentArrayList = new ArrayList<>();
-        try {
-            JSONObject infosJson = new JSONObject(infos);
-
-            JSONArray infosArray = infosJson.getJSONArray(STUDENTS);
-
-//            JSONObject classJson = infosJson.getJSONObject(infos);
-            classname = infosJson.getString(CLASS);
-
-            for (int i = 0; i < infosArray.length(); i++) {
-                String name;
-                int age;
-
-                JSONObject students = infosArray.getJSONObject(i);
-                name = students.getString(NAME);
-                age = students.getInt(AGE);
-
-                Log.d(TAG, "getInfoFromJson: "+name+"   "+age);
-                StudentBean studentBean = new StudentBean(name, age);
-
-                studentArrayList.add(studentBean);
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
 }
