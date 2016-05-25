@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String AGE      = "age";
     public static final String CLASS    = "class";
 
-
+    TextView tvClass;
     TextView tvName1;
     TextView tvAge1;
     TextView tvName2;
@@ -64,11 +64,13 @@ public class MainActivity extends AppCompatActivity {
                     Gson gson = new Gson();
                     String json = (String) msg.obj;
                     Students students = gson.fromJson(json, Students.class);
+                    tvClass.setText(students.classname);
                     List<StudentBean> studentBeens = students.getStudents();
                     tvName1.setText(studentBeens.get(0).getName());
-                    tvAge1.setText(studentBeens.get(0).getAge());
+                    tvAge1.setText(studentBeens.get(0).getAge()+"");
                     tvName2.setText(studentBeens.get(1).getName());
-                    tvAge2.setText(studentBeens.get(1).getAge());
+                    tvAge2.setText(studentBeens.get(1).getAge()+"");
+
                     //tvName1.setText(studentBeens.get(0).getName());
 
 //                    for (StudentBean studentBeen : studentBeens) {
@@ -90,10 +92,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+
         tvName1 = (TextView) findViewById(R.id.tv_name1);
         tvAge1 = (TextView) findViewById(R.id.tv_age1);
         tvName2 = (TextView) findViewById(R.id.tv_name2);
         tvAge2 = (TextView) findViewById(R.id.tv_age2);
+        tvClass = (TextView) findViewById(R.id.tv_class);
     }
 
     private void initData() {

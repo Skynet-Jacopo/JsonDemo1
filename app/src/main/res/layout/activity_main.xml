@@ -8,6 +8,7 @@
     tools:context="edu.feicui.jsondemo1.MainActivity">
 
     <TextView
+        android:id="@+id/tv_class"
         android:textSize="30sp"
         android:gravity="center"
         android:text="班级名称"
